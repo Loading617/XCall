@@ -1,2 +1,2 @@
 # XCall
-Spam Call Block for Android 
+Block Spam Calling for Android 
