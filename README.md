@@ -3,4 +3,5 @@
 </p>
 
 # XCall
-Spam Block Caller for Android 
+Spam Block Caller for Android
+App Icon Color Inspired by JetBrains Amazing Programming Language @Kotlin!
