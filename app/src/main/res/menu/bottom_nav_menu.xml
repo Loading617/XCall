@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <item
+        android:id="@+id/navigation_call_logs"
+        android:icon="@drawable/ic_call"
+        android:title="Call Log" />
+    <item
+        android:id="@+id/navigation_blacklist"
+        android:icon="@drawable/ic_blacklist"
+        android:title="Blacklist" />
+    <item
+        android:id="@+id/navigation_settings"
+        android:icon="@drawable/ic_settings"
+        android:title="Settings" />
+
+</menu>
