@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<PreferenceScreen xmlns:android="http://schemas.android.com/apk/res/android">
+    <SwitchPreferenceCompat
+        app:key="spam_filter_enabled"
+        app:title="Enable Spam Filter"
+        app:defaultValue="true" />
+
+    <EditTextPreference
+        app:key="spam_keywords"
+        app:title="Spam Keywords"
+        app:dialogTitle="Enter Spam Keywords (comma separated)"
+        app:defaultValue="win,prize,free,congratulations,click here" />
+</PreferenceScreen>
