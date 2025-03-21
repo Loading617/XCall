@@ -23,6 +23,21 @@
 
     <SwitchPreferenceCompat
         app:key="move_spam_to_a_separate_folder"
+        app:title="Move Spam"
+        app:defaultValue="true" />
+
+    <EditTextPreference
+        app:key="Move Spam to a separate folder"
         app:title="Move Spam to a separate folder"
+        app:defaultValue="true" />
+
+    <SwitchPreferenceCompat
+        app:key="whitelist_contacts"
+        app:title="Whitelist Contacts"
+        app:defaultValue="true" />
+
+    <EditTextPreference
+        app:key="blacklist_contacts"
+        app:title="Blacklist Contacts"
         app:defaultValue="true" />
 </PreferenceScreen>
