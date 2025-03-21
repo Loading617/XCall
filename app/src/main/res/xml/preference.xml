@@ -10,4 +10,19 @@
         app:title="Spam Keywords"
         app:dialogTitle="Enter Spam Keywords (comma separated)"
         app:defaultValue="win,prize,free,congratulations,click here" />
+
+    <SwitchPreferenceCompat
+        app:key="auto_delete_spam_calls_enabled"
+        app:title="Auto Delete Spam Calls"
+        app:defaultValue="true" />
+
+    <EditTextPreference
+        app:key="auto_delete"
+        app:title="Auto Delete"
+        app:defaultValue="true" />
+
+    <SwitchPreferenceCompat
+        app:key="move_spam_to_a_separate_folder"
+        app:title="Move Spam to a separate folder"
+        app:defaultValue="true" />
 </PreferenceScreen>
