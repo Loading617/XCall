@@ -3,15 +3,15 @@
 
     <item
         android:id="@+id/navigation_call_logs"
-        android:icon="@drawable/ic_call"
+        android:icon="@drawable/CallLogs"
         android:title="Call Log" />
     <item
         android:id="@+id/navigation_blacklist"
-        android:icon="@drawable/ic_blacklist"
+        android:icon="@drawable/Blacklist"
         android:title="Blacklist" />
     <item
         android:id="@+id/navigation_settings"
-        android:icon="@drawable/ic_settings"
+        android:icon="@drawable/Settings"
         android:title="Settings" />
 
 </menu>
