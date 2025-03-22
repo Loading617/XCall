@@ -1,43 +1,48 @@
 <?xml version="1.0" encoding="utf-8"?>
 <PreferenceScreen xmlns:android="http://schemas.android.com/apk/res/android">
-    <SwitchPreferenceCompat
-        app:key="spam_filter_enabled"
-        app:title="Enable Spam Filter"
-        app:defaultValue="true" />
+        <SwitchPreferenceCompat
+            app:key="spam_filter_enabled"
+            app:title="Enable Spam Filter"
+            app:defaultValue="true" />
 
-    <EditTextPreference
-        app:key="spam_keywords"
-        app:title="Spam Keywords"
-        app:dialogTitle="Enter Spam Keywords (comma separated)"
-        app:defaultValue="win,prize,free,congratulations,click here" />
+        <EditTextPreference
+            app:key="spam_keywords"
+            app:title="Spam Keywords"
+            app:dialogTitle="Enter Spam Keywords (comma separated)"
+            app:defaultValue="win,prize,free,congratulations,click here" />
 
-    <SwitchPreferenceCompat
-        app:key="auto_delete_spam_calls_enabled"
-        app:title="Auto Delete Spam Calls"
-        app:defaultValue="true" />
+        <SwitchPreferenceCompat
+            app:key="auto_delete_spam"
+            app:title="Auto-Delete Spam Messages"
+            app:defaultValue="false" />
 
-    <EditTextPreference
-        app:key="auto_delete"
-        app:title="Auto Delete"
-        app:defaultValue="true" />
+        <SwitchPreferenceCompat
+            app:key="move_spam_to_folder"
+            app:title="Move Spam to a Separate Folder"
+            app:defaultValue="true" />
 
-    <SwitchPreferenceCompat
-        app:key="move_spam_to_a_separate_folder"
-        app:title="Move Spam"
-        app:defaultValue="true" />
+        <EditTextPreference
+            app:key="whitelist_contacts"
+            app:title="Whitelist Contacts"
+            app:dialogTitle="Enter Whitelisted Numbers (comma separated)"
+            app:defaultValue="" />
 
-    <EditTextPreference
-        app:key="Move Spam to a separate folder"
-        app:title="Move Spam to a separate folder"
-        app:defaultValue="true" />
+        <EditTextPreference
+            app:key="blacklist_contacts"
+            app:title="Blacklist Contacts"
+            app:dialogTitle="Enter Blacklisted Numbers (comma separated)"
+            app:defaultValue="" />
 
-    <SwitchPreferenceCompat
-        app:key="whitelist_contacts"
-        app:title="Whitelist Contacts"
-        app:defaultValue="true" />
+        <SwitchPreferenceCompat
+            app:key="notify_on_blocked_spam"
+            app:title="Notify on Blocked Spam"
+            app:defaultValue="false" />
 
-    <EditTextPreference
-        app:key="blacklist_contacts"
-        app:title="Blacklist Contacts"
-        app:defaultValue="true" />
+        <ListPreference
+            app:key="spam_log_history"
+            app:title="Spam Log History"
+            app:dialogTitle="Keep spam log history for"
+            app:entries="@array/log_duration_options"
+            app:entryValues="@array/log_duration_values"
+            app:defaultValue="30" />
 </PreferenceScreen>
