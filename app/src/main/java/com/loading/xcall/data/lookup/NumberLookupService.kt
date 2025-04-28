@@ -7,7 +7,6 @@ import kotlinx.coroutines.withContext
 
 class NumberLookupService(private val context: Context) {
 
-    // Simulate a local list of spam numbers for now
     private val localSpamNumbers = listOf(
         "+18005551234",
         "+1234567890",
@@ -20,7 +19,7 @@ class NumberLookupService(private val context: Context) {
                 if (isInLocalBlacklist(number)) {
                     LookupResult.SPAM
                 } else {
-                    // In future, do remote API call here
+
                     LookupResult.UNKNOWN
                 }
             } catch (e: Exception) {
