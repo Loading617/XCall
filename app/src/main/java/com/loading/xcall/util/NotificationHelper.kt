@@ -19,7 +19,7 @@ object NotificationHelper {
         createNotificationChannel(context)
 
         val notification = NotificationCompat.Builder(context, CHANNEL_ID)
-            .setSmallIcon(R.drawable.ic_block) // Use your block icon
+            .setSmallIcon(R.drawable.ic_block)
             .setContentTitle("Blocked Call")
             .setContentText("Call from $number was blocked")
             .setPriority(NotificationCompat.PRIORITY_HIGH)
