@@ -10,6 +10,10 @@
         android:icon="@drawable/Blacklist"
         android:title="Blacklist" />
     <item
+        android:id="@+id/navigation_whitelist"
+        android:icon="@drawable/Whitelist"
+        android:title="Whitelist" />   
+    <item
         android:id="@+id/navigation_settings"
         android:icon="@drawable/Settings"
         android:title="Settings" />
