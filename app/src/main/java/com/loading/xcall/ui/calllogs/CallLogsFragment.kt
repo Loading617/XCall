@@ -6,35 +6,38 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.TextView
 import androidx.fragment.app.Fragment
-import androidx.lifecycle.ViewModelProvider
-import androidx.recyclerview.widget.RecyclerView
-import android.content.ContentResolver
+import androidx.fragment.app.viewModels
+import androidx.lifecycle.lifecycleScope
 import com.loading.xcall.databinding.FragmentCallLogsBinding
+import dagger.hilt.android.AndroidEntryPoint
+import kotlinx.coroutines.flow.collectLatest
+import kotlinx.coroutines.launch
 
+@AndroidEntryPoint
 class CallLogsFragment : Fragment() {
 
     private var _binding: FragmentCallLogsBinding? = null
-
-    // This property is only valid between onCreateView and
-    // onDestroyView.
     private val binding get() = _binding!!
+
+    private val viewModel: CallLogsViewModel by viewModels()
 
     override fun onCreateView(
         inflater: LayoutInflater,
         container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View {
-        val callLogsViewModel =
-            ViewModelProvider(this).get(CallLogsViewModel::class.java)
-
         _binding = FragmentCallLogsBinding.inflate(inflater, container, false)
-        val root: View = binding.root
+        return binding.root
+    }
 
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
         val textView: TextView = binding.textCallLogs
-        callLogsViewModel.text.observe(viewLifecycleOwner) {
-            textView.text = it
+        viewLifecycleOwner.lifecycleScope.launch {
+            viewModel.text.collectLatest {
+                textView.text = it
+            }
         }
-        return root
     }
 
     override fun onDestroyView() {

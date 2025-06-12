@@ -1,13 +1,14 @@
 package com.loading.xcall.ui.settings
 
-import androidx.lifecycle.LiveData
-import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
+import dagger.hilt.android.lifecycle.HiltViewModel
+import javax.inject.Inject
+import kotlinx.coroutines.flow.MutableStateFlow
+import kotlinx.coroutines.flow.StateFlow
+import kotlinx.coroutines.flow.asStateFlow
 
-class SettingsViewModel : ViewModel() {
-
-    private val _text = MutableLiveData<String>().apply {
-        value = "This is notifications Fragment"
-    }
-    val text: LiveData<String> = _text
+@HiltViewModel
+class SettingsViewModel @Inject constructor() : ViewModel() {
+    private val _text = MutableStateFlow("This is notifications Fragment")
+    val text: StateFlow<String> = _text.asStateFlow()
 }

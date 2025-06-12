@@ -30,7 +30,7 @@ class AddNumberDialog : DialogFragment() {
                 val number = binding.numberInput.text.toString().trim()
 
                 if (number.isNotEmpty()) {
-                    viewModel.addBlacklistedNumber(name, number)
+                    viewModel.addNumber(name, number)
                     Toast.makeText(requireContext(), "Number added", Toast.LENGTH_SHORT).show()
                 } else {
                     Toast.makeText(requireContext(), "Please enter a number", Toast.LENGTH_SHORT).show()

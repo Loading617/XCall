@@ -4,35 +4,54 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.TextView
 import androidx.fragment.app.Fragment
-import androidx.lifecycle.ViewModelProvider
-import androidx.recyclerview.widget.RecyclerView
-import android.widget.ListView
+import androidx.fragment.app.viewModels
+import androidx.lifecycle.lifecycleScope
+import androidx.recyclerview.widget.LinearLayoutManager
 import com.loading.xcall.databinding.FragmentBlacklistBinding
+import dagger.hilt.android.AndroidEntryPoint
+import kotlinx.coroutines.flow.collectLatest
+import kotlinx.coroutines.launch
 
+@AndroidEntryPoint
 class BlacklistFragment : Fragment() {
 
-    private var _binding: FragmentHomeBinding? = null
-
+    private var _binding: FragmentBlacklistBinding? = null
     private val binding get() = _binding!!
+
+    private val viewModel: BlacklistViewModel by viewModels()
+    private lateinit var adapter: BlacklistAdapter
 
     override fun onCreateView(
         inflater: LayoutInflater,
         container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View {
-        val blacklistViewModel =
-            ViewModelProvider(this).get(BlacklistViewModel::class.java)
+        _binding = FragmentBlacklistBinding.inflate(inflater, container, false)
+        return binding.root
+    }
 
-        _binding = FragmentHomeBinding.inflate(inflater, container, false)
-        val root: View = binding.root
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
 
-        val textView: TextView = binding.textHome
-        blacklistViewModel.text.observe(viewLifecycleOwner) {
-            textView.text = it
+        adapter = BlacklistAdapter(
+            onDeleteClick = { entry ->
+                viewModel.removeNumber(entry)
+            }
+        )
+
+        binding.blacklistRecyclerView.layoutManager = LinearLayoutManager(requireContext())
+        binding.blacklistRecyclerView.adapter = adapter
+
+        binding.addNumberButton.setOnClickListener {
+            AddNumberDialog().show(parentFragmentManager, "AddNumberDialog")
         }
-        return root
+
+        viewLifecycleOwner.lifecycleScope.launch {
+            viewModel.blacklistedNumbers.collectLatest { numbers ->
+                adapter.submitList(numbers)
+            }
+        }
     }
 
     override fun onDestroyView() {

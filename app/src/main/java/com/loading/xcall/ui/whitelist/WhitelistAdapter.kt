@@ -6,10 +6,11 @@ import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
 import com.loading.xcall.databinding.ItemWhitelistNumberBinding
+import com.loading.xcall.data.WhitelistEntry
 
 class WhitelistAdapter(
-    private val onDeleteClick: (String) -> Unit
-) : ListAdapter<String, WhitelistAdapter.WhitelistViewHolder>(DiffCallback()) {
+    private val onDeleteClick: (WhitelistEntry) -> Unit
+) : ListAdapter<WhitelistEntry, WhitelistAdapter.WhitelistViewHolder>(DiffCallback()) {
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): WhitelistViewHolder {
         val binding = ItemWhitelistNumberBinding.inflate(
@@ -26,16 +27,16 @@ class WhitelistAdapter(
         private val binding: ItemWhitelistNumberBinding
     ) : RecyclerView.ViewHolder(binding.root) {
 
-        fun bind(number: String) {
-            binding.numberTextView.text = number
+        fun bind(entry: WhitelistEntry) {
+            binding.numberTextView.text = entry.phoneNumber
             binding.deleteButton.setOnClickListener {
-                onDeleteClick(number)
+                onDeleteClick(entry)
             }
         }
     }
 
-    class DiffCallback : DiffUtil.ItemCallback<String>() {
-        override fun areItemsTheSame(oldItem: String, newItem: String): Boolean = oldItem == newItem
-        override fun areContentsTheSame(oldItem: String, newItem: String): Boolean = oldItem == newItem
+    class DiffCallback : DiffUtil.ItemCallback<WhitelistEntry>() {
+        override fun areItemsTheSame(oldItem: WhitelistEntry, newItem: WhitelistEntry): Boolean = oldItem.id == newItem.id
+        override fun areContentsTheSame(oldItem: WhitelistEntry, newItem: WhitelistEntry): Boolean = oldItem == newItem
     }
 }
